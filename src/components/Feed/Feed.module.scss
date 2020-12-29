@@ -16,20 +16,11 @@
       @include margin-bottom(0.5);
 
       &-link {
-        color: $color-base;
+        color: var(--textNormal);
         &:hover,
         &:focus {
-          color: $color-base;
-          border-bottom: 1px solid $color-base;
-        }
-      }
-
-      &-link-dark {
-        color: $color-white;
-        &:hover,
-        &:focus {
-          color: $color-white;
-          border-bottom: 1px solid $color-white;
+          color: var(--textNormal);
+          border-bottom: 1px solid var(--textNormal);
         }
       }
     }
@@ -43,7 +34,7 @@
     &-meta {
       &-time {
         font-size: $typographic-small-font-size;
-        color: $color-base;
+        color: var(--textNormal);
         font-weight: 600;
         text-transform: uppercase;
       }

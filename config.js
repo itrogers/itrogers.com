@@ -4,11 +4,10 @@ module.exports = {
   url: "https://itrogers.com",
   pathPrefix: "/",
   title: "Ian T. Rogers",
-  subtitle:
-    "Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.",
-  copyright: "© All rights reserved.",
+  subtitle: "",
+  copyright: "© 2015 - Present, Ian Rogers. All rights reserved.",
   disqusShortname: "",
-  postsPerPage: 4,
+  postsPerPage: 5,
   googleAnalyticsId: "",
   useKatex: false,
   menu: [
@@ -19,10 +18,6 @@ module.exports = {
     {
       label: "About me",
       path: "/pages/about",
-    },
-    {
-      label: "Contact me",
-      path: "/pages/contacts",
     },
   ],
   author: {

@@ -18,7 +18,8 @@ body {
 
   --bg: #{$color-white};
   --textNormal: #{$color-base};
-  --textTitle: #{$color-base};
+  --textPrimary: #{$color-primary};
+  --textSecondary: #{$color-secondary};
   --textLink: #{$color-primary};
 
   background-color: var(--bg);
@@ -27,8 +28,13 @@ body {
   &.dark {
     --bg: #{$color-base};
     --textNormal: #{$color-white};
-    --textTitle: #{$color-white};
     --textLink: #{$color-primary};
+  }
+
+  &.kohost {
+    --textPrimary: #{$color-primary-kohost};
+    --textSecondary: #{$color-secondary-kohost};
+    --textLink: #{$color-primary-kohost};
   }
 }
 

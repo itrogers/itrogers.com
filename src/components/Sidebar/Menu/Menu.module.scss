@@ -1,5 +1,5 @@
-@import '../../../assets/scss/variables';
-@import '../../../assets/scss/mixins';
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/mixins";
 
 .menu {
   @include margin-bottom(1);
@@ -15,7 +15,7 @@
 
       &-link {
         font-size: $typographic-base-font-size;
-        color: $typographic-base-font-color;
+        color: var(--textNormal);
         font-weight: normal;
         border: 0;
 
@@ -26,14 +26,10 @@
         }
 
         &--active {
-          color: $color-base;
-          border-bottom: 1px solid $color-base;
+          color: var(--textLink);
+          border-bottom: 1px solid var(--textLink);
         }
-
       }
-
     }
-
   }
-
 }

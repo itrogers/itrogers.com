@@ -4,6 +4,7 @@ template: post
 slug: my-thoughts-on-mobilegeddon
 title: My thoughts on "Mobilegeddon"
 category: Websites
+draft: false
 ---
 
 Last week, Google officially [rolled out their mobile friendly update](http://googlewebmastercentral.blogspot.com/2015/04/rolling-out-mobile-friendly-update.html), which basically favors websites that are mobile friendly in their search results. This has caused a bit of a panic. Some small business owners are now taking reactive efforts in making their websites mobile friendly, to keep Google happy. I find it interesting for a couple of reasons:

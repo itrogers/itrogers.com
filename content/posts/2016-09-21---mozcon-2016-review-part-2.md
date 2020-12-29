@@ -4,6 +4,7 @@ template: post
 slug: mozcon-2016-review-part-2
 title: MozCon 2016 Review - Part 2
 category: Learning
+description: "Part 2 of my MozCon review."
 ---
 
 **This post originally appeared on the [Mvestor Media blog.**](https://www.mvestormedia.com/mozcon-2016-review-part-2/)

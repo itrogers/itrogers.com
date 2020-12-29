@@ -1,8 +1,8 @@
-@import '../../../assets/scss/variables';
-@import '../../../assets/scss/mixins';
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/mixins";
 
 .tags {
-  @include margin-bottom(.5);
+  @include margin-bottom(0.5);
 
   &__list {
     list-style: none;
@@ -21,17 +21,13 @@
         border: 1px solid $color-gray-border;
         text-decoration: none;
         border-radius: $button-border-radius;
-        color: $color-base;
+        color: var(--textNormal);
 
         &:hover,
         &:focus {
           color: $color-primary;
         }
-
       }
-
     }
-
   }
-
 }

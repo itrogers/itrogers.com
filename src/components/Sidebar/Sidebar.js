@@ -6,7 +6,7 @@ import Copyright from "./Copyright";
 import Menu from "./Menu";
 import styles from "./Sidebar.module.scss";
 import { useSiteMetadata } from "../../hooks";
-import { ThemeToggler } from "gatsby-plugin-dark-mode";
+import ThemeToggle from "./ThemeToggle";
 
 type Props = {
   isIndex?: boolean,
@@ -21,20 +21,7 @@ const Sidebar = ({ isIndex }: Props) => {
         <Author author={author} isIndex={isIndex} />
         <Menu menu={menu} />
         <Contacts contacts={author.contacts} />
-        <ThemeToggler>
-          {({ theme, toggleTheme }) => (
-            <label>
-              <input
-                type="checkbox"
-                onChange={(e) =>
-                  toggleTheme(e.target.checked ? "dark" : "light")
-                }
-                checked={theme === "dark"}
-              />{" "}
-              Dark mode
-            </label>
-          )}
-        </ThemeToggler>
+        <ThemeToggle label="Dark Mode" optA="dark" optB="light" />
         <Copyright copyright={copyright} />
       </div>
     </div>
