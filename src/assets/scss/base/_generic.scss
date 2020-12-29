@@ -18,6 +18,7 @@ body {
 
   --bg: #{$color-white};
   --textNormal: #{$color-base};
+  --textHeads: #{$color-base};
   --textPrimary: #{$color-primary};
   --textSecondary: #{$color-secondary};
   --textLink: #{$color-primary};
@@ -29,6 +30,7 @@ body {
     --bg: #{$color-base};
     --textNormal: #{$color-white};
     --textLink: #{$color-primary};
+    --textHeads: #757575;
   }
 
   &.kohost {
@@ -44,6 +46,7 @@ h3,
 h4,
 h5,
 h6 {
+  color: var(--textHeads);
   font-family: $typographic-font-family;
   font-weight: 600;
 }
@@ -175,6 +178,17 @@ figcaption {
 .anchor {
   margin-left: -30px !important;
   padding-right: 14px !important;
+}
+
+body :not(pre) > code[class*="language-"],
+body pre[class*="language-"] {
+  background-color: $color-base;
+  color: var(--textPrimary);
+}
+
+body code[class*="language-"],
+body pre[class*="language-"] {
+  color: var(--textPrimary);
 }
 
 @include breakpoint-sm {

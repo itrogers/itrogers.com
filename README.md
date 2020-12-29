@@ -1,7 +1,9 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f50b3a8c-0ab6-4ad9-8d64-c69585227aae/deploy-status)](https://app.netlify.com/sites/clever-feynman-e4abec/deploys)
+
 # ITRogers.com Source
 
 <h4 align="center">
-  A constantly evolving set of content for itrogers.com
+  A constantly evolving set of code and content for itrogers.com.
 </h4>
 
 ## License

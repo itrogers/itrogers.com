@@ -16,11 +16,11 @@
       @include margin-bottom(0.5);
 
       &-link {
-        color: var(--textNormal);
+        color: var(--textHeads);
         &:hover,
         &:focus {
-          color: var(--textNormal);
-          border-bottom: 1px solid var(--textNormal);
+          color: var(--textHeads);
+          border-bottom: 1px solid var(--textHeads);
         }
       }
     }
