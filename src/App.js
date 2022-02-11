@@ -1,7 +1,7 @@
 import React from "react";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Routes from "./routes";
-
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
       <div className="container mx-auto text-white">
         <Routes />
       </div>
+      <Footer />
     </div>
   );
 }

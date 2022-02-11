@@ -10,9 +10,13 @@ const AppRoutes = () => {
     <Routes>
       <Route path="/" element={<HomePage />} />
       {posts.map((post) => {
-        const {slug, body, ...meta} = post;
+        const { slug, body, ...meta } = post;
         return (
-          <Route path={slug} element={<BlogPost content={body} {...meta} />} />
+          <Route
+            key={slug}
+            path={slug}
+            element={<BlogPost content={body} {...meta} />}
+          />
         );
       })}
     </Routes>

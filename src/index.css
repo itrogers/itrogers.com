@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.react-syntax-highlighter-line-number {
+  color: gray !important;
+}

@@ -1,3 +1,3 @@
 module.exports = {
-	twConfig: "./tailwind.config.js"
-  };   
+  twConfig: "./tailwind.config.js",
+};

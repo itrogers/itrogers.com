@@ -13,9 +13,9 @@ description: "Create a custom hook to access a socket.io instance within any Rea
 
 Over at [Kohost](https://kohost.io), we rely on the [socket.io](http://socket.io) library to enable real time communication for users to control their Spaces, wether it be a hotel room or their office.
 
-In a recent refactoring and update of our front end user application, which utilizes Create React App, I found the need to reference the logged-in user’s socket.io connection within any React component. Thanks to a custom hook, which we will call `useSocketIo` - this is possible. I’ve simplified the code to be somewhat primitive for the purposes of this guide. 
+In a recent refactoring and update of our front end user application, which utilizes Create React App, I found the need to reference the logged-in user’s socket.io connection within any React component. Thanks to a custom hook, which we will call `useSocketIo` - this is possible. I’ve simplified the code to be somewhat primitive for the purposes of this guide.
 
-*Note: since the user has a single socket.io connection that needs access across the entire application, I’ve opted to use React context to make the hook accessible to components within the Application shell, without having to reconnect on each page. [Let me know](https://twitter.com/itrogers) if there might be a better or more optimal way to do this.* 
+_Note: since the user has a single socket.io connection that needs access across the entire application, I’ve opted to use React context to make the hook accessible to components within the Application shell, without having to reconnect on each page. [Let me know](https://twitter.com/itrogers) if there might be a better or more optimal way to do this._
 
 ## Create the socket.io connection using a custom class
 
@@ -34,7 +34,6 @@ export default class SocketIoClient extends EventEmitter {
     this.socket = null;
     this._connect();
   }
-
 
   get connected() {
     return this.socket && this.socket.connected;
@@ -63,7 +62,7 @@ export default class SocketIoClient extends EventEmitter {
     });
 
     this.socket.on("connect_error", (error) => {
-      console.log(error)
+      console.log(error);
     });
   }
 
@@ -71,13 +70,14 @@ export default class SocketIoClient extends EventEmitter {
     this.socket.on(event, callback);
   }
 
-   send(event, data) {
+  send(event, data) {
     this.socket.emit(event, data);
   }
 }
 ```
 
 In the `_connect` method, there isn’t much difference here compared to the socket.io documentation, it's pretty basic expect for a customized way to get the socket url into the library.
+
 ## Create the hook and return the socket instance
 
 `use-socket-io.js`
@@ -109,7 +109,7 @@ export function useSocketIo() {
 
 This is great, but the issue here is that every time we call `useSocketIo()`, the hook will initiate the socket connection. That’s definitely a waste of resources and will provide for a bad user experience.
 
-I solved this by wrapping the majority of the application in a socket.io context, where the return value of the hook is the provider for all consumers of the context. In other words, this allows all components (no matter how deep), to use the socket context 
+I solved this by wrapping the majority of the application in a socket.io context, where the return value of the hook is the provider for all consumers of the context. In other words, this allows all components (no matter how deep), to use the socket context
 
 ## Wrap the hook in context
 
@@ -181,7 +181,6 @@ function App() {
 }
 
 export default App;
-
 ```
 
 ## Access the socket instance in a component
@@ -221,5 +220,4 @@ const SimpleExample = () => {
 };
 
 export default SimpleExample;
-
 ```

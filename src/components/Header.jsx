@@ -38,7 +38,6 @@ export default function Header() {
                   <Link to="/">
                     <Logo />
                   </Link>
-                  
                 </div>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">

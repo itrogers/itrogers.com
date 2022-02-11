@@ -25,18 +25,18 @@ export function usePosts(options) {
             .parse(text);
 
           const info = result?.children[0]?.value;
-          console.log('running this')
+          console.log("running this");
 
           const parsedMeta = yaml.load(info);
-          const {date, ...meta} = parsedMeta
+          const { date, ...meta } = parsedMeta;
           return { ...meta, date: new Date(date), body: text };
         })
       );
     });
-    Promise.all(postData).then((posts) =>{
-      const sorted = posts.sort((a,b) => b.date - a.date);
-      setPosts(sorted)
-    } );
+    Promise.all(postData).then((posts) => {
+      const sorted = posts.sort((a, b) => b.date - a.date);
+      setPosts(sorted);
+    });
   }, []);
 
   return posts;
