@@ -7,6 +7,7 @@ import remarkFrontmatter from "remark-frontmatter";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import classNames from "classnames";
+import IanPhoto from "../images/ian-photo.jpg"
 
 const BlogPost = ({
   title,
@@ -25,6 +26,7 @@ const BlogPost = ({
     >
       <PostHeader title={title} date={date} author={author} tags={tags} />
       <PostBody content={content} />
+      <PostFooter />
     </article>
   );
 };
@@ -93,5 +95,21 @@ const PostBody = ({ content }) => {
     </Markdown>
   );
 };
+
+const PostFooter = () => {
+  return <footer className="text-white font-bold bg-slate-800 p-8">
+    <h3 className="mb-3 font-mono">Written by Ian Rogers</h3>
+    <div className="flex">
+      <div className="mr-5 basis-1/5">
+        <img src={IanPhoto} className="rounded-full" alt="Ian Rogers"/>
+      </div>
+      <div className="basis-4/5">
+        <p className="text-sm md:text-base font-sans">I'm am entrpreneur, software developer, and writer based in Las Vegas, NV. This is my personal blog to document and showcase what I've learned, so that it may be of help to others.</p>
+      </div>
+    </div>
+    
+
+  </footer>
+}
 
 export default BlogPost;
