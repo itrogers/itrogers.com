@@ -7,6 +7,7 @@ import { ReactComponent as WPLogo } from "../../images/wp-logo.svg";
 import { ReactComponent as ReactLogo } from "../../images/react-logo.svg";
 import { ReactComponent as AWSLogo } from "../../images/aws-logo.svg";
 import { ReactComponent as DockerLogo } from "../../images/docker-logo.svg";
+import { format } from "date-fns";
 
 const HomePage = () => {
   return (
@@ -22,14 +23,31 @@ const LatestPosts = () => {
   return (
     <div>
       <h2 className="font-bold text-3xl font-mono mb-4">Latest Articles</h2>
-      <ul className="list-disc list-inside text-lg">
-        {posts.map((post) => (
-          <li className="mb-2">
-            <Link key={post.slug} to={post.slug}>
-              {post.title}
-            </Link>
-          </li>
-        ))}
+      <ul className="list-inside text-sm md:text-lg">
+        {posts.map((post) => {
+          let isNew = false;
+          const now = new Date();
+          const threeWeeks = 60 * 60 * 24 * 7 * 3;
+          if (now.getTime() / 1000 - post.date.getTime() / 1000 <= threeWeeks)
+            isNew = true;
+          return (
+            <li key={post.slug} className="mb-4 flex justify-between">
+              <Link className="shrink mr-2" key={post.slug} to={post.slug}>
+                {post.title}
+              </Link>
+              <span className="whitespace-nowrap grow text-right text-xs md:text-sm">
+                {isNew && (
+                  <span className="mr-2 font-bold font-mono p-1.5 pl-2 bg-slate-800">
+                    New!
+                  </span>
+                )}
+                <span className="font-mono text-gray-100">
+                  {format(post.date, "MMM dd")}
+                </span>
+              </span>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
