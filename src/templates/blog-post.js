@@ -93,7 +93,7 @@ const PostHeader = ({
           Filed in {category}
         </p>
       )}
-      {tags.length > 0 && (
+      {tags?.length > 0 && (
         <p className="italic text-sm text-gray-400 font-mono">
           Tagged as {tags.join(", ")}
         </p>
