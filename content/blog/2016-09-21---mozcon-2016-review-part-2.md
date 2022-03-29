@@ -13,11 +13,11 @@ This is part 2 of 2 of the my MozCon 2016 review. [You can read part 1 here.](ht
 
 As I stated earlier, I did not attend every speaker - only those that I thought were relevant to my particular line of business, web design.
 
-![Rob Bucci MozCon 2016](http://www.mvestormedia.com/wp-content/uploads/2016/09/rob-bucci-mozcon-2016-e1474472861500.jpg)
+![Rob Bucci MozCon 2016](https://www.mvestormedia.com/wp-content/uploads/2016/09/rob-bucci-mozcon-2016-e1474472861500.jpg)
 
 ## Taking the Top Spot: How to Earn More Featured Snippets with Rob Bucci
 
-[Download Slide Deck](http://www.mvestormedia.com/wp-content/uploads/2016/09/Rob-Bucci-Taking-the-Top-Spot-How-to-Earn-More-Featured-Snippets-MozCon-2016.pdf)
+[Download Slide Deck](https://www.mvestormedia.com/wp-content/uploads/2016/09/Rob-Bucci-Taking-the-Top-Spot-How-to-Earn-More-Featured-Snippets-MozCon-2016.pdf)
 
 I really enjoyed Rob Bucci’s presentation. I had a notion in my head that rich snippets in Google were only taking away from user click throughs. Although some searches are taking away user clicks, Rob pointed out that listings in Google with a rich snippet drove user engagement up when someone did click through.
 
@@ -41,11 +41,11 @@ One of my key takeaways from Rob’s presentation is that you can use your under
 
 You can use this strategy against your competitors. If you find weak snippets in your keyword space, you can then format your content correctly so that Google doesn’t need to work so hard. If Google’s looking for a table, give them a table. The chances of Google using your site instead is now much better.
 
-![kindra-hall-mozcon-2016](http://www.mvestormedia.com/wp-content/uploads/2016/09/kindra-hall-mozcon-2016-e1474472955209.jpg)
+![kindra-hall-mozcon-2016](https://www.mvestormedia.com/wp-content/uploads/2016/09/kindra-hall-mozcon-2016-e1474472955209.jpg)
 
 ## The Irresistible Power of Strategic Storytelling with Kindra Hall
 
-[Download Slide Deck](http://www.mvestormedia.com/wp-content/uploads/2016/09/Kindra-Hall-The-Irresistible-Power-of-Strategic-Storytelling-MozCon-2016.pdf)
+[Download Slide Deck](https://www.mvestormedia.com/wp-content/uploads/2016/09/Kindra-Hall-The-Irresistible-Power-of-Strategic-Storytelling-MozCon-2016.pdf)
 
 Storytelling seems to have become a very powerful marketing strategy. I think it’s tough to pull off due to the time investment, but once it is completed, it will be an asset to any marketing strategy.
 

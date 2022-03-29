@@ -9,17 +9,17 @@ description: "Part 1 of my MozCon review."
 
 **This post originally appeared on the [Mvestor Media blog](https://www.mvestormedia.com/mozcon-2016-review-part-1/).**
 
-Last week, I was fortunate enough to visit Seattle for MozCon 2016. This was my 5th MozCon, where my first was in 2011. I was looking for partners for our new [Local SEO partner program](http://www.mvestormedia.com/local-seo-agency-partner-program/). As usual, I met up with Brodie Tyler from [ReviewJump](http://reviewjump.com) where we had a great time meeting others in the industry. I wanted to create this MozCon 2016 review to show the main things that I learned and will apply to our web design campaigns.
+Last week, I was fortunate enough to visit Seattle for MozCon 2016. This was my 5th MozCon, where my first was in 2011. I was looking for partners for our new [Local SEO partner program](https://www.mvestormedia.com/local-seo-agency-partner-program/). As usual, I met up with Brodie Tyler from [ReviewJump](http://reviewjump.com) where we had a great time meeting others in the industry. I wanted to create this MozCon 2016 review to show the main things that I learned and will apply to our web design campaigns.
 
 **FYI - I didn’t attend every session and speaker, only those that I was able to and felt were relevant to my industry and service offering.**
 
 ## MozCon 2016 Review and Takeaways
 
-![Lauren Vacarello MozCon 2016](http://www.mvestormedia.com/wp-content/uploads/2016/09/lauren-vacarello-mozcon2016-e1474391923757.png)
+![Lauren Vacarello MozCon 2016](https://www.mvestormedia.com/wp-content/uploads/2016/09/lauren-vacarello-mozcon2016-e1474391923757.png)
 
 ### The Big One: Re-Launching Your Website with Lauren Vaccarello
 
-[Download Slide Deck](http://www.mvestormedia.com/wp-content/uploads/2016/09/Lauren-Vaccarello-The-Big-One-Relaunching-Your-Website-MozCon-2016.pdf)
+[Download Slide Deck](https://www.mvestormedia.com/wp-content/uploads/2016/09/Lauren-Vaccarello-The-Big-One-Relaunching-Your-Website-MozCon-2016.pdf)
 
 [Lauren](https://twitter.com/laurenv) gave me an entirely new outlook on re-launching a website. Although she works with larger brands and websites than we do, the principles she went over can still apply. There are a few main concepts I took away from her presentation.
 
@@ -35,11 +35,11 @@ Many times, a site is launched without testing it with regular users first. Laur
 
 The project isn’t over after the site is the launched, it is just the beginning. Data should be collected to make sure that the new site was a success. This is also a good time to review the goal you set to make sure your purpose for relaunching was fulfilled.
 
-![Justine Jordan MozCon 2016](http://www.mvestormedia.com/wp-content/uploads/2016/09/justine-jordan-mozcon-2016-e1474392014186.png)
+![Justine Jordan MozCon 2016](https://www.mvestormedia.com/wp-content/uploads/2016/09/justine-jordan-mozcon-2016-e1474392014186.png)
 
 ### The Hidden Talents of Email: Creating Customer-Centric Messages with Justine Jordan
 
-[Download Slide Deck](http://www.mvestormedia.com/wp-content/uploads/2016/09/Justine-Jordan-The-Hidden-Talents-of-Email-Creating-Customer-Centric-Messages-MozCon-2016.pdf)
+[Download Slide Deck](https://www.mvestormedia.com/wp-content/uploads/2016/09/Justine-Jordan-The-Hidden-Talents-of-Email-Creating-Customer-Centric-Messages-MozCon-2016.pdf)
 
 I’ve seen [Justine Jordan](https://twitter.com/meladorri) speak before at Artifcant in Providence in late 2014. She is always a top notch presenter. She spoke about email marketing best practices. Although we don’t provide email marketing as a service, we use it for lead generation and keeping our customers up-to-date. Here’s what I took away:
 
@@ -62,11 +62,11 @@ Here are some notes I took down that speak for themselves:
 - In regards to text sizing, body copy should be 16px+, heading should be 22px+, and buttons should be at least 44px x 44px for easy reading.
 - Videos don’t work well in the email. Link the videos over to a page on your website instead of trying to get them to work inside of the email.
 
-![Alex Stein MozCon 2016](http://www.mvestormedia.com/wp-content/uploads/2016/09/alex-stein-mozcon-2016-e1474392050903.png)
+![Alex Stein MozCon 2016](https://www.mvestormedia.com/wp-content/uploads/2016/09/alex-stein-mozcon-2016-e1474392050903.png)
 
 ### Boost SEO Rankings by Removing Internal Links with Alex Stein
 
-[Download Slide Deck](http://www.mvestormedia.com/wp-content/uploads/2016/09/Alex-Stein-MozCon-2016-Boost-SEO-Rankings-by-Removing-Internal-Links.pdf)
+[Download Slide Deck](https://www.mvestormedia.com/wp-content/uploads/2016/09/Alex-Stein-MozCon-2016-Boost-SEO-Rankings-by-Removing-Internal-Links.pdf)
 
 [Alex Stein](https://twitter.com/sonofadiplomat) was one of the community speakers and had a great proposition to remove many global and internal links to help boost page and domain authority. As many sites contain a large amount of global internal links, he gave us some key insights into what to remove and what to keep.
 
