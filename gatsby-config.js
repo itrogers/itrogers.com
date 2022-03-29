@@ -143,10 +143,8 @@ module.exports = {
         name: `I.T. Rogers`,
         short_name: `I.T. Rogers`,
         start_url: `/`,
-        background_color: `#ffffff`,
-        // This will impact how browsers show your PWA/website
-        // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#663399`,
+        background_color: `#111827`,
+        theme_color: `#111827`,
         display: `minimal-ui`,
         icon: `src/images/ian-photo.jpg`, // This path is relative to the root of the site.
       },
