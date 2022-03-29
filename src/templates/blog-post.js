@@ -1,16 +1,18 @@
-import * as React from "react"
-import { Link, graphql } from "gatsby"
+import * as React from "react";
+import { Link, graphql } from "gatsby";
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import Bio from "../components/bio";
+import Layout from "../components/layout";
+import Seo from "../components/seo";
 
 const BlogPostTemplate = ({ data, location }) => {
-  const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const { previous, next } = data
+  const post = data.markdownRemark;
+  const siteTitle = data.site.siteMetadata?.title || `Title`;
+  const { previous, next } = data;
 
-  const { frontmatter, html, excerpt } = post
+  const { frontmatter, html, excerpt } = post;
+
+  console.log(post);
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -23,7 +25,12 @@ const BlogPostTemplate = ({ data, location }) => {
         itemScope
         itemType="https://schema.org/Article"
       >
-        <PostHeader title={frontmatter.title} date={frontmatter.date} />
+        <PostHeader
+          title={frontmatter.title}
+          date={frontmatter.date}
+          tags={frontmatter.tags}
+          category={frontmatter.category}
+        />
         <section
           dangerouslySetInnerHTML={{ __html: html }}
           itemProp="articleBody"
@@ -60,10 +67,16 @@ const BlogPostTemplate = ({ data, location }) => {
         </ul>
       </nav>
     </Layout>
-  )
-}
+  );
+};
 
-const PostHeader = ({ title, author = "Ian Rogers", date, tags = [] }) => {
+const PostHeader = ({
+  title,
+  author = "Ian Rogers",
+  date,
+  tags = [],
+  category,
+}) => {
   return (
     <header className="mb-8">
       <h1 className="text-3xl font-bold font-mono mb-2" itemProp="name">
@@ -75,16 +88,21 @@ const PostHeader = ({ title, author = "Ian Rogers", date, tags = [] }) => {
         </span>{" "}
         by <span itemProp="author">{author}</span>
       </p>
+      {category && (
+        <p className="italic text-sm text-gray-400 font-mono">
+          Filed in {category}
+        </p>
+      )}
       {tags.length > 0 && (
         <p className="italic text-sm text-gray-400 font-mono">
-          Posted in {tags.join(", ")}
+          Tagged as {tags.join(", ")}
         </p>
       )}
     </header>
-  )
-}
+  );
+};
 
-export default BlogPostTemplate
+export default BlogPostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostBySlug(
@@ -105,6 +123,8 @@ export const pageQuery = graphql`
         title
         date(formatString: "MM/DD/YYYY hh:mm a")
         description
+        tags
+        category
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
@@ -124,4 +144,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "itrogers.com",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "itrogers.com dependencies",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Ian Rogers <ian@itrogers.com>",
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
@@ -22,11 +22,13 @@
     "gatsby-plugin-react-helmet": "^5.10.0",
     "gatsby-plugin-react-svg": "^3.1.0",
     "gatsby-plugin-sharp": "^4.10.2",
+    "gatsby-remark-classes": "^1.0.2",
     "gatsby-remark-copy-linked-files": "^5.10.0",
     "gatsby-remark-images": "^6.10.2",
     "gatsby-remark-prismjs": "^6.10.0",
     "gatsby-remark-responsive-iframe": "^5.10.0",
     "gatsby-remark-smartypants": "^5.10.0",
+    "gatsby-remark-vscode": "^3.3.1",
     "gatsby-source-filesystem": "^4.10.1",
     "gatsby-transformer-remark": "^5.10.2",
     "gatsby-transformer-sharp": "^4.10.0",
@@ -40,7 +42,7 @@
   "devDependencies": {
     "prettier": "^2.6.0"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://itrogers.com",
   "keywords": [
     "gatsby"
   ],

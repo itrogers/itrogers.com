@@ -23,7 +23,7 @@ I chose to wrap the socket.io connection into a class that extends an `EventEmit
 
 `socketIoClient.js`
 
-```jsx
+```jsx {numberLines}
 import io from "socket.io-client";
 import { EventEmitter } from "events";
 
@@ -82,7 +82,7 @@ In the `_connect` method, there isn’t much difference here compared to the soc
 
 `use-socket-io.js`
 
-```jsx
+```jsx {numberLines}
 import React from "react";
 import SocketIoClient from "./socketIoClient";
 
@@ -117,7 +117,7 @@ Here, we now export the Context provider, which uses the hook, instead of direct
 
 `use-socket-io.js`
 
-```jsx
+```jsx {numberLines}
 import React, { useContext, createContext, useRef } from "react";
 import SocketIoClient from "./socketIoClient";
 
@@ -160,7 +160,7 @@ Set the context provider high up in the application tree, ideally somewhere abov
 
 `App.js`
 
-```jsx
+```jsx {numberLines}
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ProvideSocketIoClient } from "./hooks/use-socket-io-client";
@@ -189,7 +189,7 @@ Here you can see a simple example of how we use the hook in an arbitrary compone
 
 `./components/SimpleExample.jsx`
 
-```jsx
+```jsx {numberLines}
 import React, { useEffect, useState } from "react";
 import { useSocketIoClient } from "../hooks/use-socket-io-client";
 
