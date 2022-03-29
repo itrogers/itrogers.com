@@ -1,18 +1,18 @@
-import React from "react"
-import { Disclosure } from "@headlessui/react"
-import { MenuIcon, XIcon } from "@heroicons/react/outline"
-import { Link } from "gatsby"
-import Logo from "./Logo"
+import React from "react";
+import { Disclosure } from "@headlessui/react";
+import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import { Link } from "gatsby";
+import Logo from "./logo";
 
 const navigation = [
   { name: "Home", href: "/", current: true },
   { name: "About", href: "/about", current: false },
   { name: "Speaking", href: "/speaking", current: false },
   { name: "Book", href: "/book", current: false },
-]
+];
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(" ")
+  return classes.filter(Boolean).join(" ");
 }
 
 export default function Header() {
@@ -41,7 +41,7 @@ export default function Header() {
                 </div>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
-                    {navigation.map(item => (
+                    {navigation.map((item) => (
                       <Link
                         key={item.name}
                         to={item.href}
@@ -64,7 +64,7 @@ export default function Header() {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {navigation.map(item => (
+              {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
                   as="a"
@@ -85,5 +85,5 @@ export default function Header() {
         </>
       )}
     </Disclosure>
-  )
+  );
 }
