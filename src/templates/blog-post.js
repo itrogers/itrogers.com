@@ -1,9 +1,10 @@
 import * as React from "react";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 
 import Bio from "../components/bio";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
+import Link from "../components/link";
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark;
@@ -11,8 +12,6 @@ const BlogPostTemplate = ({ data, location }) => {
   const { previous, next } = data;
 
   const { frontmatter, html, excerpt } = post;
-
-  console.log(post);
 
   return (
     <Layout location={location} title={siteTitle}>

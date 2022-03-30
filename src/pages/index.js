@@ -1,20 +1,21 @@
-import * as React from "react"
-import { Link, graphql } from "gatsby"
+import * as React from "react";
+import { graphql } from "gatsby";
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import Bio from "../components/bio";
+import Layout from "../components/layout";
+import Seo from "../components/seo";
+import Link from "../components/link";
 
-import ianImage from "../images/ian-profile.jpg"
-import JSLogo from "../images/js-logo.inline.svg"
-import WPLogo from "../images/wp-logo.inline.svg"
-import ReactLogo from "../images/react-logo.inline.svg"
-import AWSLogo from "../images/aws-logo.inline.svg"
-import DockerLogo from "../images/docker-logo.inline.svg"
+import ianImage from "../images/ian-profile.jpg";
+import JSLogo from "../images/js-logo.inline.svg";
+import WPLogo from "../images/wp-logo.inline.svg";
+import ReactLogo from "../images/react-logo.inline.svg";
+import AWSLogo from "../images/aws-logo.inline.svg";
+import DockerLogo from "../images/docker-logo.inline.svg";
 
 const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const posts = data.allMarkdownRemark.nodes
+  const siteTitle = data.site.siteMetadata?.title || `Title`;
+  const posts = data.allMarkdownRemark.nodes;
 
   if (posts.length === 0) {
     return (
@@ -27,7 +28,7 @@ const BlogIndex = ({ data, location }) => {
           gatsby-config.js).
         </p>
       </Layout>
-    )
+    );
   }
 
   return (
@@ -36,18 +37,18 @@ const BlogIndex = ({ data, location }) => {
       <Intro />
       <h2 className="font-bold text-3xl font-mono mb-4">Latest Articles</h2>
       <ul className="list-inside text-sm md:text-lg">
-        {posts.map(post => {
-          const { fields, frontmatter } = post
-          const { slug } = fields
-          const { title, date, rawDate } = frontmatter
-          let isNew = false
-          const now = new Date()
-          const threeWeeks = 60 * 60 * 24 * 7 * 3
+        {posts.map((post) => {
+          const { fields, frontmatter } = post;
+          const { slug } = fields;
+          const { title, date, rawDate } = frontmatter;
+          let isNew = false;
+          const now = new Date();
+          const threeWeeks = 60 * 60 * 24 * 7 * 3;
           if (
             now.getTime() / 1000 - new Date(rawDate).getTime() / 1000 <=
             threeWeeks
           )
-            isNew = true
+            isNew = true;
           return (
             <li key={slug} className="mb-4 flex justify-between">
               <Link className="shrink mr-2" key={slug} to={slug}>
@@ -62,12 +63,12 @@ const BlogIndex = ({ data, location }) => {
                 <span className="font-mono text-gray-100">{date}</span>
               </span>
             </li>
-          )
+          );
         })}
       </ul>
     </Layout>
-  )
-}
+  );
+};
 
 const Intro = () => {
   return (
@@ -107,10 +108,10 @@ const Intro = () => {
         <img src={ianImage} className="shadow-2xl rounded" alt="Ian Rogers" />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default BlogIndex
+export default BlogIndex;
 
 export const pageQuery = graphql`
   query {
@@ -134,4 +135,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
