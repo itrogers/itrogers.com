@@ -2,7 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import { Link as GatsbyLink } from "gatsby";
 
-const Link = ({ to = "#", children: content, className, ...rest }) => {
+const Link = ({ to = "#", children: content, className, newTab, ...rest }) => {
   const checkExternal = () => {
     try {
       const toUrl = new URL(to, window.location.origin);
@@ -24,12 +24,17 @@ const Link = ({ to = "#", children: content, className, ...rest }) => {
 
   if (isExternal)
     return (
-      <a className={cx} href={to} target="_self">
+      <a target={newTab ? "_blank" : "_self"} className={cx} href={to}>
         {content}
       </a>
     );
   return (
-    <GatsbyLink className={cx} to={to} {...rest}>
+    <GatsbyLink
+      target={newTab ? "_blank" : "_self"}
+      className={cx}
+      to={to}
+      {...rest}
+    >
       {content}
     </GatsbyLink>
   );

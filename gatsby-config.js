@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `I.T. Rogers`,
+    title: `IT Rogers`,
     author: {
       name: `Ian Rogers`,
       summary: `who lives and works in San Francisco building useful things.`,
@@ -132,7 +132,7 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
-            title: "Gatsby Starter Blog RSS Feed",
+            title: "IT Rogers RSS Feed",
           },
         ],
       },
@@ -140,8 +140,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `I.T. Rogers`,
-        short_name: `I.T. Rogers`,
+        name: `IT Rogers`,
+        short_name: `IT Rogers`,
         start_url: `/`,
         background_color: `#111827`,
         theme_color: `#111827`,
