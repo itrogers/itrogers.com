@@ -15,7 +15,7 @@ const AboutPage = ({ data, location }) => {
           About Me | Ian T. Rogers
         </h1>
         <p className="mb-8">
-          Thank you for stopping by! This page is simply about me. I’ll give you
+          Thank you for stopping by! This page is simply about me. I'll give you
           a quick summary:
         </p>
 
@@ -30,12 +30,12 @@ const AboutPage = ({ data, location }) => {
             We're chaning the way you interact with your hotel, for good.
           </li>
           <li className={liCx}>
-            Founder, Principal, and Web Developer at
-            <Link to="https://mvestormedia.com">Mvestor Media</Link> My O.G.
-            "day job".
+            Founder, Principal, and Web Developer at{" "}
+            <Link to="https://mvestormedia.com">Mvestor Media</Link> - we build
+            high performant websites.
           </li>
           <li className={liCx}>
-            Partner, CMO at{" "}
+            Co-Founder, Partner, CMO at{" "}
             <Link to="https://fcidesign.com">
               Fusch Commercial Interiors &amp; Design
             </Link>

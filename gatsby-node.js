@@ -1,4 +1,5 @@
 const path = require(`path`);
+const _ = require("lodash");
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
@@ -6,13 +7,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.js`);
-  const page = path.resolve(`./src/templates/page.js`);
+  const tagTemplate = path.resolve("src/templates/tag.js");
 
   // Get all markdown blog posts sorted by date
   const postsResults = await graphql(
     `
       {
-        allMarkdownRemark(
+        postsRemark: allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: ASC }
           limit: 1000
         ) {
@@ -21,6 +22,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             fields {
               slug
             }
+          }
+        }
+        tagsGroup: allMarkdownRemark(limit: 1000) {
+          group(field: frontmatter___tags) {
+            fieldValue
           }
         }
       }
@@ -35,7 +41,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return;
   }
 
-  const posts = postsResults.data.allMarkdownRemark.nodes;
+  const posts = postsResults.data.postsRemark.nodes;
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -58,6 +64,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
     });
   }
+
+  const tags = postsResults.data.tagsGroup.group;
+
+  tags.forEach((tag) => {
+    createPage({
+      path: `/tags/${_.kebabCase(tag.fieldValue)}/`,
+      component: tagTemplate,
+      context: {
+        tag: tag.fieldValue,
+      },
+    });
+  });
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

@@ -1,5 +1,6 @@
 import * as React from "react";
 import { graphql } from "gatsby";
+import _ from "lodash";
 
 import Bio from "../components/bio";
 import Layout from "../components/layout";
@@ -76,6 +77,12 @@ const PostHeader = ({
   tags = [],
   category,
 }) => {
+  const tagArchives = tags.map((tag, idx) => (
+    <>
+      <Link to={`/tags/${_.kebabCase(tag)}`}>{tag}</Link>
+      {idx === tags.length - 1 ? "" : ", "}
+    </>
+  ));
   return (
     <header className="mb-8">
       <h1 className="text-3xl font-bold font-mono mb-2" itemProp="name">
@@ -94,7 +101,7 @@ const PostHeader = ({
       )}
       {tags?.length > 0 && (
         <p className="italic text-sm text-gray-400 font-mono">
-          Tagged as {tags.join(", ")}
+          Tagged as {tagArchives}
         </p>
       )}
     </header>
