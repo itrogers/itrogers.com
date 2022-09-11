@@ -6,7 +6,7 @@ import Logo from "../components/logo";
 import Seo from "../components/seo";
 import photo from "../images/ian-photo.jpg";
 import Spotify from "../images/spotify.inline.svg";
-import IG from "../images/ig.inline.svg";
+import Instagram from "../images/ig.inline.svg";
 import Twitter from "../images/twitter.inline.svg";
 
 const LinksPage = ({ data, location }) => {
@@ -42,13 +42,13 @@ const LinksPage = ({ data, location }) => {
           </Link>
         </Button>
 
-        <Button className="bg-gradient-to-r from-[#feda75] via-[#d62976] to-[#4f5bd5]">
+        <Button className="bg-gradient-to-r from-[#feda75] via-[#d62976] to-[#4f5bd5] border-transparent">
           <Link
             className={linkCx}
             colorClass="text-white"
             to="https://instagram.com/itrogers"
           >
-            <IG />
+            <Instagram />
             <span className="ml-1">Instagram</span>
           </Link>
         </Button>
