@@ -8,6 +8,10 @@ import photo from "../images/ian-photo.jpg";
 import Spotify from "../images/spotify.inline.svg";
 import Instagram from "../images/ig.inline.svg";
 import Twitter from "../images/twitter.inline.svg";
+import MvestorMedia from "../images/mvestor.inline.svg";
+import Kohost from "../images/kohost.inline.svg";
+import Github from "../images/github.inline.svg";
+import LinkedIn from "../images/linkedin.inline.svg";
 
 const LinksPage = ({ data, location }) => {
   const siteTitle = data?.site.siteMetadata?.title || `Title`;
@@ -42,9 +46,9 @@ const LinksPage = ({ data, location }) => {
           </Link>
         </Button>
 
-        <Button className="bg-gradient-to-r from-[#feda75] via-[#d62976] to-[#4f5bd5] border-transparent">
+        <Button className="bg-[#d62976]  border-[#d62976]">
           <Link
-            className={linkCx}
+            className={linkCx + " hover:text-[#d62976]"}
             colorClass="text-white"
             to="https://instagram.com/itrogers"
           >
@@ -64,48 +68,46 @@ const LinksPage = ({ data, location }) => {
           </Link>
         </Button>
 
-        <Button>
+        <Button className="bg-[#0072B1] border-[#0072B1]">
+          <Link
+            className={linkCx + " hover:text-[#0072B1]"}
+            colorClass="text-white"
+            to="https://linkedin.com/itrogers"
+          >
+            <LinkedIn className="h-6" />
+            <span className="ml-2">LinkedIn</span>
+          </Link>
+        </Button>
+
+        <Button className="bg-[#171515] border-[#171515]">
+          <Link
+            className={linkCx + " hover:text-white]"}
+            colorClass="text-white"
+            hoverColorClass="text-white"
+            to="https://github.com/itrogers"
+          >
+            <Github className="h-6" />
+            <span className="ml-2">GitHub</span>
+          </Link>
+        </Button>
+
+        <Button className="bg-[#81a9e4] border-[#81a9e4]">
           <Link
             className={linkCx}
             colorClass="text-white"
             to="https://kohost.io"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                fillRule="evenodd"
-                d="M14.447 3.027a.75.75 0 01.527.92l-4.5 16.5a.75.75 0 01-1.448-.394l4.5-16.5a.75.75 0 01.921-.526zM16.72 6.22a.75.75 0 011.06 0l5.25 5.25a.75.75 0 010 1.06l-5.25 5.25a.75.75 0 11-1.06-1.06L21.44 12l-4.72-4.72a.75.75 0 010-1.06zm-9.44 0a.75.75 0 010 1.06L2.56 12l4.72 4.72a.75.75 0 11-1.06 1.06L.97 12.53a.75.75 0 010-1.06l5.25-5.25a.75.75 0 011.06 0z"
-                clipRule="evenodd"
-              />
-            </svg>
-
-            <span className="ml-2">Kohost</span>
+            <Kohost className="h-6" />
           </Link>
         </Button>
 
-        <Button>
+        <Button className="bg-[#f7922d] border-[#f7922d]">
           <Link
             className={linkCx}
             colorClass="text-white"
             to="https://mvestormedia.com"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                fillRule="evenodd"
-                d="M1.371 8.143c5.858-5.857 15.356-5.857 21.213 0a.75.75 0 010 1.061l-.53.53a.75.75 0 01-1.06 0c-4.98-4.979-13.053-4.979-18.032 0a.75.75 0 01-1.06 0l-.53-.53a.75.75 0 010-1.06zm3.182 3.182c4.1-4.1 10.749-4.1 14.85 0a.75.75 0 010 1.061l-.53.53a.75.75 0 01-1.062 0 8.25 8.25 0 00-11.667 0 .75.75 0 01-1.06 0l-.53-.53a.75.75 0 010-1.06zm3.204 3.182a6 6 0 018.486 0 .75.75 0 010 1.061l-.53.53a.75.75 0 01-1.061 0 3.75 3.75 0 00-5.304 0 .75.75 0 01-1.06 0l-.53-.53a.75.75 0 010-1.06zm3.182 3.182a1.5 1.5 0 012.122 0 .75.75 0 010 1.061l-.53.53a.75.75 0 01-1.061 0l-.53-.53a.75.75 0 010-1.06z"
-                clipRule="evenodd"
-              />
-            </svg>
-            <span className="ml-2">Mvestor Media</span>
+            <MvestorMedia className="h-6" />
           </Link>
         </Button>
       </article>
@@ -115,7 +117,7 @@ const LinksPage = ({ data, location }) => {
 
 const Button = ({ children, className }) => {
   const cx = classNames(
-    "border-2 border-white hover:bg-transparent hover:text-cyan-500 text-center flex items-center justify-center mb-4",
+    "border-2 hover:bg-transparent hover:text-cyan-500 text-center flex items-center justify-center mb-4",
     className
   );
   return <div className={cx}>{children}</div>;
