@@ -101,7 +101,7 @@ const Intro = () => {
         </ul>
         <p>
           You can read more <Link to="/about">about me</Link> or find me on{" "}
-          <Link href="https://twitter.com/itrogers">Twitter</Link>.{" "}
+          <Link to="https://twitter.com/itrogers">Twitter</Link>.{" "}
         </p>
       </div>
       <div className="basis-2/5 align-right">
