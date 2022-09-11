@@ -72,7 +72,7 @@ const LinksPage = ({ data, location }) => {
           <Link
             className={linkCx + " hover:text-[#0072B1]"}
             colorClass="text-white"
-            to="https://linkedin.com/itrogers"
+            to="https://linkedin.com/in/itrogers"
           >
             <LinkedIn className="h-6" />
             <span className="ml-2">LinkedIn</span>
