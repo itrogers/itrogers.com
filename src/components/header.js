@@ -7,8 +7,6 @@ import Logo from "./logo";
 const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Speaking", href: "/speaking" },
-  { name: "Book", href: "/book" },
 ];
 
 export default function Header() {

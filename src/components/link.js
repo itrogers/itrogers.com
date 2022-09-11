@@ -2,7 +2,15 @@ import React from "react";
 import classNames from "classnames";
 import { Link as GatsbyLink } from "gatsby";
 
-const Link = ({ to = "#", children: content, className, newTab, ...rest }) => {
+const Link = ({
+  to = "#",
+  children: content,
+  colorClass = "text-white",
+  hoverColorClass = "hover:text-cyan-300",
+  className,
+  newTab,
+  ...rest
+}) => {
   const checkExternal = () => {
     try {
       const toUrl = new URL(to, window.location.origin);
@@ -17,8 +25,8 @@ const Link = ({ to = "#", children: content, className, newTab, ...rest }) => {
   const cx = classNames(
     "underline",
     "underline-offset-4",
-    "text-cyan-500",
-    "hover:text-cyan-300",
+    colorClass,
+    hoverColorClass,
     className
   );
 
