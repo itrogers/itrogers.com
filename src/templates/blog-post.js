@@ -28,7 +28,7 @@ const BlogPostTemplate = ({ data, location }) => {
         <PostHeader
           title={frontmatter.title}
           date={frontmatter.date}
-          tags={frontmatter.tags}
+          tags={frontmatter.tags || []}
           category={frontmatter.category}
         />
         <section
