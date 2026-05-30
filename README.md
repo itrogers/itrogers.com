@@ -1,105 +1,106 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's blog starter
-</h1>
+# itrogers.com
 
-Kick off your project with this blog boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+Personal site & living dev journal for Ian Rogers. Terminal-inspired, content-first,
+and built to be updated often.
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.com/docs/gatsby-starters/)._
+Built with **[Astro](https://astro.build)** + **[Tailwind CSS v4](https://tailwindcss.com)**,
+deployed static on **Netlify**.
 
-## 🚀 Quick start
+```
+$ whoami
+→ Ian Rogers — entrepreneur · engineer · writer
+```
 
-1.  **Create a Gatsby site.**
+## Stack
 
-    Use the Gatsby CLI ([install instructions](https://www.gatsbyjs.com/docs/tutorial/part-0/#gatsby-cli)) to create a new site, specifying the blog starter.
+- **Astro 5** (static output, zero JS shipped by default)
+- **Tailwind CSS v4** — CSS-first config; all design tokens live in `src/styles/global.css` (`@theme`)
+- **Content collections** (`astro:content`) with Zod-validated frontmatter
+- **Shiki** for code highlighting · **@astrojs/rss** · **@astrojs/sitemap**
+- Type-checked with `astro check`
 
-    ```shell
-    # create a new Gatsby site using the blog starter
-    gatsby new my-blog-starter https://github.com/gatsbyjs/gatsby-starter-blog
-    ```
+## Develop
 
-1.  **Start developing.**
+```bash
+npm install
+npm run dev        # http://localhost:4321
+npm run build      # -> dist/
+npm run preview    # serve the built site
+npm run check      # type-check .astro + content
+```
 
-    Navigate into your new site’s directory and start it up.
+Requires Node 22+.
 
-    ```shell
-    cd my-blog-starter/
-    gatsby develop
-    ```
+## Project layout
 
-1.  **Open the source code and start editing!**
+```
+src/
+  consts.ts            # site title, nav, social, homepage stack
+  content.config.ts    # collection schemas (blog, notes, pages)
+  styles/global.css    # design system: tokens, utilities, .article prose
+  lib/utils.ts         # kebab, date formatting, reading time
+  components/          # Header, Footer, TerminalWindow, PostRow, Icon, Tag, ...
+  layouts/BaseLayout.astro
+  pages/              # routes (see below)
+  content/
+    blog/   *.md       # long-form articles
+    notes/  *.md       # the living stream (short notes / TILs)
+    pages/  now.md, about.md
+  assets/icons/        # inline SVGs (imported by Icon.astro)
+public/
+  media/               # images referenced as /media/... + avatars
+  _redirects           # Netlify 301s from legacy Gatsby URLs
+  favicon.svg, robots.txt
+```
 
-    Your site is now running at `http://localhost:8000`!
+## Routes
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby Tutorial](https://www.gatsbyjs.com/docs/tutorial/part-4/#use-graphiql-to-explore-the-data-layer-and-write-graphql-queries)._
+`/` · `/writing` · `/writing/<slug>` · `/notes` · `/notes/<id>` · `/now` ·
+`/about` · `/links` · `/tags` · `/tags/<tag>` · `/rss.xml` · `404`
 
-    Open the `my-blog-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+## Writing content
 
-## 🚀 Quick start (Gatsby Cloud)
+**A new article** — add `src/content/blog/<anything>.md`:
 
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
+```yaml
+---
+title: "My Post Title"
+date: "2026-06-01 09:00:00-08:00"
+slug: my-post-title        # the clean URL -> /writing/my-post-title
+description: "One-line summary for SEO + RSS."
+category: Code             # optional
+tags: [Astro, TIL]         # optional
+draft: false               # true hides it from the site
+---
 
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-blog)
+Markdown body. Code fences get Shiki highlighting. Images can use /media/<file>.
+```
 
-## 🧐 What's inside?
+> URLs route off the `slug` field. If you change a slug after publishing, add a
+> 301 in `public/_redirects` so old links keep working.
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+**A note** (the stream) — add `src/content/notes/<date>-<slug>.md`:
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
+```yaml
+---
+title: "Optional short title"
+date: "2026-06-01 09:00:00-08:00"
+tags: [Notes]
+---
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+A short note. Permalink is /notes/<filename-without-extension>.
+```
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+**Now / About** — edit `src/content/pages/now.md` and `about.md`.
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+## Deploy
 
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
+Pushed to the `master` branch → Netlify builds with `npm run build` and publishes
+`dist/` (see `netlify.toml`). Legacy date-prefixed article URLs 301 to the new
+`/writing/<slug>` paths via `public/_redirects`.
 
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+## Design
 
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/) for more detail).
-
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
-
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-ssr/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
-
-9.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
-
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
-
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
-
-12. **`README.md`**: A text file containing useful reference information about your project.
-
-## 🎓 Learning Gatsby
-
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.com/). Here are some places to start:
-
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.com/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
-
-## 💫 Deploy
-
-[Build, Deploy, and Host On The Only Cloud Built For Gatsby](https://www.gatsbyjs.com/products/cloud/)
-
-Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby framework that combines a modern developer experience with an optimized, global edge network.
-
-<!-- AUTO-GENERATED-CONTENT:END -->
+Terminal-inspired: mono UI chrome, serif long-form prose ("documents you `cat`"),
+a refined low-chroma palette (aqua dominant, sparing green/amber). Tweak the whole
+look from the tokens in `src/styles/global.css`.

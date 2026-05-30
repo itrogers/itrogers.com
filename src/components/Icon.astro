@@ -1,0 +1,49 @@
+---
+/**
+ * Inline-SVG icon from src/assets/icons/<name>.svg.
+ * Several brand SVGs use embedded `<style>.cls-N{}` blocks; we namespace the
+ * `cls-` class names per icon so multiple icons on one page don't collide.
+ */
+const icons = import.meta.glob("../assets/icons/*.svg", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+}) as Record<string, string>;
+
+interface Props {
+  name: string;
+  class?: string;
+  title?: string;
+}
+
+const { name, class: className, title } = Astro.props;
+let svg = icons[`../assets/icons/${name}.svg`] ?? "";
+if (svg) {
+  const prefix = "ic" + name.replace(/[^a-z0-9]/gi, "") + "-";
+  svg = svg.replace(/cls-/g, prefix + "cls-");
+}
+---
+
+{
+  svg && (
+    <span
+      class:list={["icon", className]}
+      set:html={svg}
+      role={title ? "img" : undefined}
+      aria-label={title}
+      aria-hidden={title ? undefined : "true"}
+    />
+  )
+}
+
+<style is:global>
+  .icon {
+    display: inline-flex;
+    line-height: 0;
+  }
+  .icon > svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>

@@ -1,0 +1,30 @@
+---
+import { SOCIAL } from "../consts";
+const year = new Date().getUTCFullYear();
+---
+
+<footer class="mt-24 border-t border-line">
+  <div
+    class="mx-auto flex w-full max-w-5xl flex-col gap-3 px-5 py-6 text-xs text-faint sm:flex-row sm:items-center sm:px-8"
+  >
+    <p class="flex items-center gap-2">
+      <span class="h-1.5 w-1.5 rounded-full bg-green"></span>
+      <span>© 2015–{year} Ian Rogers</span>
+    </p>
+
+    <nav class="flex flex-wrap items-center gap-x-4 gap-y-1 sm:ml-auto" aria-label="Social">
+      {
+        SOCIAL.map((s) => (
+          <a href={s.href} class="tlink" rel="me noopener" target="_blank">
+            {s.label}
+          </a>
+        ))
+      }
+      <a href="/rss.xml" class="tlink">RSS</a>
+    </nav>
+
+    <p class="text-faint/70 sm:ml-4">
+      built with <span class="text-accent">Astro</span>
+    </p>
+  </div>
+</footer>

@@ -1,0 +1,106 @@
+---
+import { getEntry, render } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TerminalWindow from "../components/TerminalWindow.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import { SOCIAL } from "../consts";
+
+const about = await getEntry("pages", "about");
+if (!about) throw new Error("Missing pages/about entry");
+const { Content } = await render(about);
+---
+
+<BaseLayout
+  title="About"
+  description="About Ian Rogers — entrepreneur, software engineer, and writer in Las Vegas."
+>
+  <!-- header: $ whoami --verbose -->
+  <header class="reveal mb-8 border-b border-line pb-4">
+    <p class="prompt text-sm text-muted">
+      <span class="text-accent">whoami</span> --verbose
+    </p>
+    <h1 class="out mt-2 text-step-2 font-extrabold leading-tight text-ink">
+      Ian Rogers
+    </h1>
+    <p class="pl-[1.4ch] text-sm text-faint">
+      entrepreneur · engineer · writer · Las Vegas
+      <span class="caret align-middle"></span>
+    </p>
+  </header>
+
+  <div class="reveal" style="--d:2">
+  <TerminalWindow title="cat ~/about.md" bodyClass="sm:p-8">
+    <div class="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-10">
+      <!-- prose -->
+      <div class="min-w-0 flex-1">
+        <p class="prompt mb-5 text-sm text-muted">
+          <span class="text-accent">cat</span> ~/about.md
+        </p>
+        <div class="article">
+          <Content />
+        </div>
+      </div>
+
+      <!-- avatar + contact card (aside on lg) -->
+      <aside class="reveal shrink-0 lg:sticky lg:top-24 lg:w-56" style="--d:3">
+        <figure class="lg:max-w-56">
+          <img
+            src="/media/ian-headshot.jpg"
+            alt="Ian Rogers"
+            width="224"
+            height="224"
+            loading="eager"
+            class="h-40 w-40 rounded-lg border border-line object-cover grayscale-[0.15] lg:h-56 lg:w-56"
+          />
+          <figcaption class="mt-2 text-xs text-faint">
+            ~/media/ian-headshot.jpg
+          </figcaption>
+        </figure>
+
+        <div class="mt-6 border-t border-line/70 pt-5">
+          <p class="prompt mb-3 text-sm text-muted">
+            <span class="text-accent">cat</span> ~/.contact
+          </p>
+          <ul class="space-y-2 pl-[1.4ch] text-sm">
+            {
+              SOCIAL.map((s) => (
+                <li class="flex items-baseline justify-between gap-3">
+                  <span class="text-faint">{s.label.toLowerCase()}</span>
+                  <a
+                    href={s.href}
+                    class="tlink truncate"
+                    target="_blank"
+                    rel="me noopener"
+                  >
+                    {s.handle}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <!-- footer line: links out -->
+    <div class="mt-8 border-t border-line/70 pt-5">
+      <p class="prompt text-sm text-muted">
+        <span class="text-accent">cd</span>
+        <a href="/now" class="tlink">~/now</a>
+        <span class="px-1 text-faint">·</span>
+        <a href="/writing" class="tlink">~/writing</a>
+        <span class="px-1 text-faint">·</span>
+        <a href="/links" class="tlink">~/links</a>
+      </p>
+      {
+        about.data.updated && (
+          <p class="mt-3 pl-[1.4ch] text-xs text-faint">
+            last updated{" "}
+            <FormattedDate date={about.data.updated} format="iso" />
+          </p>
+        )
+      }
+    </div>
+  </TerminalWindow>
+  </div>
+</BaseLayout>

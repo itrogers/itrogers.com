@@ -1,0 +1,15 @@
+---
+import { isoDate, humanDate } from "../lib/utils";
+
+interface Props {
+  date: Date;
+  /** "iso" -> 2022-02-09 (monospace lists), "human" -> February 9, 2022 */
+  format?: "iso" | "human";
+  class?: string;
+}
+
+const { date, format = "human", class: className } = Astro.props;
+const label = format === "iso" ? isoDate(date) : humanDate(date);
+---
+
+<time datetime={date.toISOString()} class={className}>{label}</time>

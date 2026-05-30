@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TerminalWindow from "../components/TerminalWindow.astro";
+---
+
+<BaseLayout
+  title="404 — not found"
+  description="That page doesn't exist. Maybe a stale link, maybe a typo. Either way: head home."
+>
+  <section class="grid-bg -mx-5 px-5 sm:-mx-8 sm:px-8">
+    <div class="flex min-h-[55vh] items-center justify-center py-10">
+      <TerminalWindow
+        title="ian@itrogers: ~ — error"
+        class="reveal w-full max-w-2xl"
+      >
+        <div class="space-y-1.5 text-sm sm:text-base">
+          <p class="prompt text-muted reveal" style="--d:1">
+            <span class="text-accent">cat</span> "$REQUEST_URI"
+          </p>
+          <p class="pl-[1.4ch] text-rose reveal" style="--d:2">
+            zsh: no such file or directory
+          </p>
+
+          <h1 class="out pt-4 text-step-1 font-bold text-ink reveal" style="--d:3">
+            that page doesn't exist (404)
+          </h1>
+          <p class="max-w-prose pl-[1.4ch] text-muted reveal" style="--d:4">
+            Probably a stale link or a typo in the path. Nothing's on fire — let's
+            get you back to solid ground.
+          </p>
+
+          <p class="prompt pt-5 text-muted reveal" style="--d:5">
+            <span class="text-accent">ls</span> ~/exits
+          </p>
+          <ul class="space-y-1.5 pl-[1.4ch] pt-1 reveal" style="--d:6">
+            <li>
+              <a href="/" class="tlink">cd ~</a>
+              <span class="text-faint"> — back home</span>
+            </li>
+            <li>
+              <a href="/writing" class="tlink">ls ~/writing</a>
+              <span class="text-faint"> — everything I've published</span>
+            </li>
+          </ul>
+
+          <p class="prompt pt-5 text-muted reveal" style="--d:7">
+            <span class="caret align-middle"></span>
+          </p>
+        </div>
+      </TerminalWindow>
+    </div>
+  </section>
+</BaseLayout>

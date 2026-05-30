@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TerminalWindow from "../components/TerminalWindow.astro";
+import Icon from "../components/Icon.astro";
+import { SITE } from "../consts";
+
+const links: { label: string; href: string; icon: string; host: string }[] = [
+  {
+    label: "Spotify",
+    href: "https://open.spotify.com/user/itrogers?si=581d04642e9a4f2f",
+    icon: "spotify",
+    host: "open.spotify.com",
+  },
+  { label: "Instagram", href: "https://instagram.com/itrogers", icon: "ig", host: "instagram.com" },
+  { label: "Twitter", href: "https://twitter.com/itrogers", icon: "twitter", host: "twitter.com" },
+  { label: "LinkedIn", href: "https://linkedin.com/in/itrogers", icon: "linkedin", host: "linkedin.com" },
+  { label: "GitHub", href: "https://github.com/itrogers", icon: "github", host: "github.com" },
+  { label: "Kohost", href: "https://kohost.io", icon: "kohost", host: "kohost.io" },
+  { label: "Mvestor Media", href: "https://mvestormedia.com", icon: "mvestor", host: "mvestormedia.com" },
+];
+---
+
+<BaseLayout title="Links" description="Find Ian Rogers around the web.">
+  <section class="mx-auto max-w-xl">
+    <TerminalWindow title="ian@itrogers: ~ — links" class="reveal">
+      <!-- identity -->
+      <div class="space-y-1.5 text-sm sm:text-base">
+        <p class="prompt text-muted reveal" style="--d:1">
+          <span class="text-accent">whoami</span>
+        </p>
+        <h1 class="out flex items-center gap-2 text-step-1 font-bold leading-tight text-ink reveal" style="--d:2">
+          @itrogers
+          <span
+            class="inline-block h-2 w-2 rounded-full bg-green"
+            style="animation: pulse-dot 2.4s ease-in-out infinite"
+            aria-hidden="true"
+          ></span>
+        </h1>
+        <p class="pl-[1.4ch] text-sm text-muted reveal" style="--d:3">
+          {SITE.tagline}
+        </p>
+      </div>
+
+      <!-- link list -->
+      <div class="mt-7 border-t border-line/70 pt-5 reveal" style="--d:4">
+        <p class="prompt mb-3 text-sm text-muted">
+          <span class="text-accent">ls</span> ~/links
+        </p>
+        <ul class="space-y-0.5">
+          {
+            links.map((l, i) => (
+              <li class="reveal" style={`--d:${i + 5}`}>
+                <a
+                  href={l.href}
+                  target="_blank"
+                  rel="me noopener"
+                  class="group flex items-center gap-3 rounded-md px-2 py-2 -mx-2 text-muted transition-colors hover:bg-raised/60 hover:text-ink"
+                >
+                  <span class="select-none text-accent" aria-hidden="true">▸</span>
+                  <Icon
+                    name={l.icon}
+                    class="h-4 w-4 shrink-0 opacity-80 transition-opacity group-hover:opacity-100"
+                  />
+                  <span class="font-medium">{l.label}</span>
+                  <span class="ml-auto truncate text-xs text-faint">{l.host}</span>
+                  <span
+                    class="text-faint transition-colors group-hover:text-accent"
+                    aria-hidden="true"
+                  >
+                    →
+                  </span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- footer -->
+      <p class="mt-7 border-t border-line/70 pt-5 text-sm text-muted prompt reveal" style="--d:12">
+        <span class="text-accent">cd</span>
+        <a href="/" class="tlink">~</a>
+        <span class="caret align-middle"></span>
+      </p>
+    </TerminalWindow>
+  </section>
+</BaseLayout>

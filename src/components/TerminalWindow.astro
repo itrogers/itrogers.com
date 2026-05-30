@@ -1,0 +1,36 @@
+---
+/**
+ * Reusable terminal window chrome: traffic-light dots + optional title bar,
+ * with a body slot. Used for the hero and any framed panel.
+ */
+interface Props {
+  title?: string;
+  class?: string;
+  bodyClass?: string;
+}
+const { title, class: className, bodyClass } = Astro.props;
+---
+
+<div
+  class:list={[
+    "rounded-lg border border-line bg-panel/70 backdrop-blur-sm overflow-hidden shadow-[0_24px_60px_-30px_rgba(0,0,0,0.8)]",
+    className,
+  ]}
+>
+  <div class="flex items-center gap-2 border-b border-line bg-raised/60 px-4 py-2.5">
+    <span class="flex gap-1.5" aria-hidden="true">
+      <span class="h-3 w-3 rounded-full bg-rose/90"></span>
+      <span class="h-3 w-3 rounded-full bg-amber/90"></span>
+      <span class="h-3 w-3 rounded-full bg-green/90"></span>
+    </span>
+    {
+      title && (
+        <span class="ml-2 truncate text-[0.8rem] text-faint">{title}</span>
+      )
+    }
+    <slot name="titlebar" />
+  </div>
+  <div class:list={["p-5 sm:p-7", bodyClass]}>
+    <slot />
+  </div>
+</div>

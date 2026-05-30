@@ -1,0 +1,52 @@
+---
+import { NAV } from "../consts";
+
+const path = Astro.url.pathname.replace(/\/+$/, "") || "/";
+const isActive = (href: string) => {
+  const h = href.replace(/\/+$/, "") || "/";
+  if (h === "/") return path === "/";
+  return path === h || path.startsWith(h + "/");
+};
+// terminal-style cwd label
+const cwd = path === "/" ? "~" : "~" + path;
+---
+
+<header class="border-b border-line bg-bg/85 backdrop-blur-sm sticky top-0 z-50">
+  <div class="mx-auto flex w-full max-w-5xl items-center gap-4 px-5 py-3 sm:px-8">
+    <a href="/" class="group flex items-center gap-2.5 shrink-0" aria-label="Home">
+      <span class="flex gap-1.5" aria-hidden="true">
+        <span class="h-2.5 w-2.5 rounded-full bg-rose/80"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-amber/80"></span>
+        <span
+          class="h-2.5 w-2.5 rounded-full bg-green"
+          style="animation: pulse-dot 2.4s ease-in-out infinite"
+        ></span>
+      </span>
+      <span class="hidden text-sm text-muted sm:inline">
+        <span class="text-accent">ian</span>@itrogers
+        <span class="text-faint">:</span>
+        <span class="text-green">{cwd}</span>
+        <span class="text-faint">$</span>
+      </span>
+    </a>
+
+    <nav class="ml-auto flex items-center gap-1 text-sm" aria-label="Primary">
+      {
+        NAV.map((item) => (
+          <a
+            href={item.href}
+            aria-current={isActive(item.href) ? "page" : undefined}
+            class:list={[
+              "rounded px-2.5 py-1 transition-colors",
+              isActive(item.href)
+                ? "text-accent bg-raised/70"
+                : "text-muted hover:text-ink hover:bg-raised/40",
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>

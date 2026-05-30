@@ -1,0 +1,103 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import Tag from "../../components/Tag.astro";
+
+const notes = (await getCollection("notes")).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+
+// render each note's markdown body up front (top-level await only)
+const items = await Promise.all(
+  notes.map(async (note) => ({
+    note,
+    Content: (await render(note)).Content,
+  })),
+);
+---
+
+<BaseLayout
+  title="Notes"
+  description="A running stream of short notes and TILs from Ian Rogers."
+>
+  <!-- header -->
+  <header class="mb-12 border-b border-line pb-5">
+    <h1 class="prompt text-step-1 font-bold text-ink">
+      <span class="text-accent">tail -f</span> ~/notes
+      <span class="caret align-middle"></span>
+    </h1>
+    <p class="mt-3 max-w-prose pl-[1.4ch] text-sm leading-relaxed text-muted">
+      short notes, TILs, and what I'm tinkering with.
+    </p>
+    <p class="mt-1 pl-[1.4ch] text-xs text-faint">
+      {notes.length} entries · newest first
+    </p>
+  </header>
+
+  <!-- stream: vertical rail + dotted entries -->
+  <div class="relative pl-7 sm:pl-9">
+    <!-- the rail -->
+    <span
+      class="pointer-events-none absolute left-[5px] top-1.5 bottom-2 w-px bg-line sm:left-[9px]"
+      aria-hidden="true"
+    ></span>
+
+    <ol class="space-y-12">
+      {
+        items.map(({ note, Content }, i) => (
+          <li class="relative reveal" style={`--d:${i + 1}`}>
+            <article id={note.id} class="scroll-mt-24">
+              {/* node on the rail */}
+              <span
+                class="absolute -left-7 top-[0.45rem] grid h-[11px] w-[11px] place-items-center rounded-full border border-line-bright bg-bg sm:-left-9"
+                aria-hidden="true"
+              >
+                <span class="h-[3px] w-[3px] rounded-full bg-accent" />
+              </span>
+
+              {/* meta line */}
+              <header class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <a
+                  href={`/notes/${note.id}`}
+                  class="tlink text-xs text-faint"
+                  aria-label={`Permalink to note from ${note.data.date.toISOString().slice(0, 10)}`}
+                >
+                  <FormattedDate date={note.data.date} format="iso" />
+                </a>
+                {note.data.title && (
+                  <a
+                    href={`/notes/${note.id}`}
+                    class="text-sm font-bold text-ink transition-colors hover:text-accent"
+                  >
+                    {note.data.title}
+                  </a>
+                )}
+              </header>
+
+              {/* short body */}
+              <div class="article mt-2 text-step-0">
+                <Content />
+              </div>
+
+              {/* tags */}
+              {note.data.tags.length > 0 && (
+                <div class="mt-3 flex flex-wrap gap-1.5">
+                  {note.data.tags.map((tag) => (
+                    <Tag tag={tag} />
+                  ))}
+                </div>
+              )}
+            </article>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+
+  {
+    notes.length === 0 && (
+      <p class="out text-muted">no notes yet. check back soon.</p>
+    )
+  }
+</BaseLayout>

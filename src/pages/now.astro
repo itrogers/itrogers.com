@@ -1,0 +1,37 @@
+---
+import { getEntry, render } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TerminalWindow from "../components/TerminalWindow.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+
+const now = await getEntry("pages", "now");
+if (!now) throw new Error("Missing pages/now content entry");
+const { Content } = await render(now);
+const { updated } = now.data;
+---
+
+<BaseLayout title="Now" description="What Ian Rogers is focused on right now.">
+  <section class="mx-auto max-w-3xl">
+    <TerminalWindow title="ian@itrogers: ~ — zsh" class="reveal">
+      <div class="reveal" style="--d:1">
+        <p class="prompt text-sm text-muted sm:text-base">
+          <span class="text-accent">cat</span> ~/now.md
+        </p>
+        {
+          updated && (
+            <p class="mt-2 pl-[1.4ch] text-step--1 text-faint">
+              last updated{" "}
+              <FormattedDate date={updated} format="human" /> — what has my attention<span class="caret align-middle" />
+            </p>
+          )
+        }
+      </div>
+
+      <div class="mt-8 border-t border-line/70 pt-8 reveal" style="--d:2">
+        <div class="article">
+          <Content />
+        </div>
+      </div>
+    </TerminalWindow>
+  </section>
+</BaseLayout>

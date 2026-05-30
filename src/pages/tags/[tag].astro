@@ -1,0 +1,73 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import TerminalWindow from "../../components/TerminalWindow.astro";
+import PostRow from "../../components/PostRow.astro";
+import { kebab } from "../../lib/utils";
+
+type Post = CollectionEntry<"blog">;
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+
+  // kebab(tag) -> { label: original tag string (first seen), posts }
+  const byTag = new Map<string, { label: string; posts: Post[] }>();
+  for (const post of posts) {
+    for (const tag of post.data.tags) {
+      const key = kebab(tag);
+      if (!key) continue;
+      const entry = byTag.get(key);
+      if (entry) entry.posts.push(post);
+      else byTag.set(key, { label: tag, posts: [post] });
+    }
+  }
+
+  return Array.from(byTag.entries()).map(([key, { label, posts }]) => ({
+    params: { tag: key },
+    props: {
+      label,
+      posts: posts.sort(
+        (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+      ),
+    },
+  }));
+}
+
+interface Props {
+  label: string;
+  posts: Post[];
+}
+const { label, posts } = Astro.props;
+const count = posts.length;
+const postSlug = (p: Post) => p.data.slug ?? p.id;
+---
+
+<BaseLayout title={`#${label}`} description={`Articles tagged ${label}.`}>
+  <TerminalWindow title={`ian@itrogers: ~/writing — grep`} class="reveal">
+    <h1 class="prompt text-step-1 font-bold leading-tight text-ink">
+      <span class="text-accent">grep</span> -r #{label} ~/writing
+    </h1>
+    <p class="out mt-2 text-sm text-muted">
+      {count} {count === 1 ? "match" : "matches"}
+      <span class="caret align-middle"></span>
+    </p>
+
+    <div class="mt-6">
+      {
+        posts.map((p) => (
+          <PostRow
+            href={`/writing/${postSlug(p)}`}
+            title={p.data.title}
+            date={p.data.date}
+            category={p.data.category}
+          />
+        ))
+      }
+    </div>
+
+    <p class="mt-6 border-t border-line/70 pt-5 text-sm text-muted prompt">
+      <a href="/tags" class="tlink">cd ~/tags</a>
+    </p>
+  </TerminalWindow>
+</BaseLayout>

@@ -1,0 +1,339 @@
+@import "tailwindcss";
+
+/* ============================================================
+   itrogers.com — terminal-inspired design system
+   Refined, low-chroma oklch palette tinted toward ink-blue.
+   Not neon: dominant aqua + sparing green/amber accents.
+   ============================================================ */
+
+@theme {
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", SFMono-Regular, Menlo,
+    Consolas, monospace;
+  --font-serif: "Newsreader", Iowan Old Style, Georgia, Cambria, "Times New Roman",
+    serif;
+
+  /* surfaces — deep ink, slight blue tint, never pure black */
+  --color-bg: oklch(0.165 0.017 248);
+  --color-panel: oklch(0.205 0.019 248);
+  --color-raised: oklch(0.247 0.019 248);
+  --color-line: oklch(0.305 0.018 248);
+  --color-line-bright: oklch(0.41 0.022 248);
+
+  /* text — tinted off-white, never pure white */
+  --color-ink: oklch(0.93 0.011 240);
+  --color-muted: oklch(0.745 0.017 242);
+  --color-faint: oklch(0.62 0.019 245);
+
+  /* accents — dominant aqua, sparing green + amber */
+  --color-accent: oklch(0.82 0.112 200);
+  --color-accent-dim: oklch(0.66 0.09 200);
+  --color-green: oklch(0.84 0.15 152);
+  --color-amber: oklch(0.84 0.108 80);
+  --color-rose: oklch(0.72 0.158 18);
+
+  --radius: 0.5rem;
+
+  /* fluid type scale */
+  --text-step--1: clamp(0.78rem, 0.74rem + 0.2vw, 0.875rem);
+  --text-step-0: clamp(0.94rem, 0.9rem + 0.2vw, 1rem);
+  --text-step-1: clamp(1.1rem, 1rem + 0.5vw, 1.3rem);
+  --text-step-2: clamp(1.45rem, 1.2rem + 1.2vw, 2rem);
+  --text-step-3: clamp(1.9rem, 1.4rem + 2.5vw, 3.1rem);
+  --text-step-4: clamp(2.4rem, 1.6rem + 4vw, 4.2rem);
+}
+
+/* ------------------------------------------------------------ base */
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-mono);
+    font-size: var(--text-step-0);
+    line-height: 1.65;
+    font-feature-settings: "liga" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    min-height: 100svh;
+    /* faint vertical wash so the deep ink isn't dead flat */
+    background-image: radial-gradient(
+      120% 80% at 50% -10%,
+      oklch(0.22 0.03 230 / 0.55) 0%,
+      transparent 60%
+    );
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: oklch(0.82 0.112 200 / 0.28);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* tinted scrollbar */
+  * {
+    scrollbar-color: var(--color-line-bright) transparent;
+    scrollbar-width: thin;
+  }
+  ::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line-bright);
+    border: 3px solid var(--color-bg);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-faint);
+  }
+}
+
+/* ------------------------------------------------------------ utilities */
+
+/* dotted grid for hero / feature areas.
+   Drawn on a ::before layer BEHIND content — masking the element directly
+   would clip its descendants (the radial fade would hide lower content). */
+@utility grid-bg {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+      linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+    background-size: 28px 28px;
+    background-position: center;
+    -webkit-mask-image: radial-gradient(120% 90% at 50% 0%, black 30%, transparent 75%);
+    mask-image: radial-gradient(120% 90% at 50% 0%, black 30%, transparent 75%);
+  }
+}
+
+/* command prompt prefix: green $ */
+@utility prompt {
+  &::before {
+    content: "$ ";
+    color: var(--color-green);
+    user-select: none;
+  }
+}
+
+/* output line: cyan arrow */
+@utility out {
+  &::before {
+    content: "→ ";
+    color: var(--color-accent);
+    user-select: none;
+  }
+}
+
+/* blinking block cursor */
+@utility caret {
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 0.6em;
+    height: 1.05em;
+    margin-left: 0.12em;
+    transform: translateY(0.16em);
+    background: var(--color-accent);
+    animation: blink 1.15s steps(1) infinite;
+  }
+}
+
+/* animated terminal-style link */
+@utility tlink {
+  color: var(--color-accent);
+  text-decoration: none;
+  background-image: linear-gradient(var(--color-accent), var(--color-accent));
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: left 100%;
+  transition: background-size 0.22s ease, color 0.22s ease;
+  &:hover {
+    color: var(--color-ink);
+    background-size: 100% 1px;
+  }
+}
+
+/* staggered entrance — set style="--d: <n>" for delay */
+@utility reveal {
+  animation: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--d, 0) * 70ms);
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(0.6rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   .article — long-form prose. Serif body inside the terminal:
+   "documents you cat". Mono reserved for code + metadata.
+   ============================================================ */
+.article {
+  font-family: var(--font-serif);
+  font-size: var(--text-step-1);
+  line-height: 1.75;
+  color: oklch(0.9 0.012 240);
+  max-width: 70ch;
+}
+
+.article > * + * { margin-top: 1.4em; }
+
+.article h2,
+.article h3,
+.article h4 {
+  font-family: var(--font-mono);
+  color: var(--color-accent);
+  letter-spacing: -0.01em;
+  margin-top: 2.4em;
+  margin-bottom: 0.2em;
+  scroll-margin-top: 5rem;
+}
+.article h2 {
+  font-size: var(--text-step-2);
+  font-weight: 700;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--color-line);
+}
+.article h2::before { content: "## "; color: var(--color-faint); }
+.article h3 { font-size: var(--text-step-1); font-weight: 700; }
+.article h3::before { content: "### "; color: var(--color-faint); }
+
+.article p { margin-block: 0; }
+
+.article a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent-dim);
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+.article a:hover { color: var(--color-ink); text-decoration-color: var(--color-ink); }
+
+.article strong { color: var(--color-ink); font-weight: 700; }
+.article em { font-style: italic; }
+
+.article ul,
+.article ol { padding-left: 1.5em; }
+.article ul { list-style: none; }
+.article ul > li { position: relative; }
+.article ul > li::before {
+  content: "▸";
+  position: absolute;
+  left: -1.4em;
+  color: var(--color-accent);
+}
+.article ol { list-style: decimal; }
+.article li::marker { color: var(--color-accent); }
+.article li + li { margin-top: 0.5em; }
+
+.article blockquote {
+  border-left: 2px solid var(--color-accent);
+  padding-left: 1.1em;
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+.article hr {
+  border: 0;
+  border-top: 1px dashed var(--color-line-bright);
+  margin-block: 2.5em;
+}
+
+.article img {
+  border-radius: var(--radius);
+  border: 1px solid var(--color-line);
+  display: block;
+}
+
+/* inline code — mono, tinted chip */
+.article :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.84em;
+  color: var(--color-accent);
+  background: var(--color-panel);
+  border: 1px solid var(--color-line);
+  padding: 0.12em 0.4em;
+  border-radius: 4px;
+  word-break: break-word;
+}
+
+/* code blocks — shiki sets inline bg; wrap in a windowed panel */
+.article pre {
+  font-family: var(--font-mono);
+  font-size: var(--text-step--1);
+  line-height: 1.6;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.2rem;
+  overflow-x: auto;
+  tab-size: 2;
+}
+.article pre code {
+  font-family: inherit;
+  background: transparent !important;
+  padding: 0;
+  border: 0;
+  font-size: inherit;
+}
+
+.article :where(h2, h3) + * { margin-top: 0.8em; }

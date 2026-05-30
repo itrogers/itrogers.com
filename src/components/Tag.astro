@@ -1,0 +1,15 @@
+---
+import { kebab } from "../lib/utils";
+
+interface Props {
+  tag: string;
+}
+const { tag } = Astro.props;
+---
+
+<a
+  href={`/tags/${kebab(tag)}`}
+  class="inline-flex items-center text-[0.8em] text-muted border border-line rounded px-2 py-0.5 transition-colors hover:border-accent hover:text-accent"
+>
+  <span class="text-faint">#</span>{tag}
+</a>

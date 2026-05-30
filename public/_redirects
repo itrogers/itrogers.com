@@ -1,0 +1,25 @@
+# 301s from legacy Gatsby date-prefixed article URLs -> clean /writing/<slug>
+# Netlify normalizes trailing slashes, both forms listed to be safe.
+
+/2015-04-30---my-thoughts-on-mobilegeddon              /writing/my-thoughts-on-mobilegeddon                      301
+/2015-04-30---my-thoughts-on-mobilegeddon/             /writing/my-thoughts-on-mobilegeddon                      301
+/2015-05-05---cinemagraphs-cool-alternatives-to-video  /writing/cinemagraphs-cool-alternatives-to-video          301
+/2015-05-05---cinemagraphs-cool-alternatives-to-video/ /writing/cinemagraphs-cool-alternatives-to-video          301
+/2015-05-19---see-you-at-forecast-2015                 /writing/see-you-at-forecast-2015                         301
+/2015-05-19---see-you-at-forecast-2015/                /writing/see-you-at-forecast-2015                         301
+/2015-09-14---my-new-book-is-now-published             /writing/my-new-book-is-now-published                     301
+/2015-09-14---my-new-book-is-now-published/            /writing/my-new-book-is-now-published                     301
+/2016-08-29---mozcon-2016                              /writing/mozcon-2016                                      301
+/2016-08-29---mozcon-2016/                             /writing/mozcon-2016                                      301
+/2016-08-29---remove-sharedaddy-sharing-post-excerpt-wordpress  /writing/remove-sharedaddy-sharing-post-excerpt-wordpress  301
+/2016-08-29---remove-sharedaddy-sharing-post-excerpt-wordpress/ /writing/remove-sharedaddy-sharing-post-excerpt-wordpress  301
+/2016-09-20---mozcon-2016-review-part-1                /writing/mozcon-2016-review-part-1                        301
+/2016-09-20---mozcon-2016-review-part-1/               /writing/mozcon-2016-review-part-1                        301
+/2016-09-21---mozcon-2016-review-part-2                /writing/mozcon-2016-review-part-2                        301
+/2016-09-21---mozcon-2016-review-part-2/               /writing/mozcon-2016-review-part-2                        301
+/2017-10-13---im-speaking-at-wordcamp-vegas-2017       /writing/im-speaking-at-wordcamp-vegas-2017               301
+/2017-10-13---im-speaking-at-wordcamp-vegas-2017/      /writing/im-speaking-at-wordcamp-vegas-2017               301
+/2020-12-29---New-Year-and-New-Stuff                   /writing/2021-new-year-new-site                           301
+/2020-12-29---New-Year-and-New-Stuff/                  /writing/2021-new-year-new-site                           301
+/2022-02-09--wrapping-socket-io-into-custom-react-hook  /writing/wrapping-socket-io-into-custom-react-hook       301
+/2022-02-09--wrapping-socket-io-into-custom-react-hook/ /writing/wrapping-socket-io-into-custom-react-hook       301
