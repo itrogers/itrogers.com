@@ -17,7 +17,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "astro": "astro"
+    "astro": "astro",
+    "new:note": "node scripts/new-note.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.12",
