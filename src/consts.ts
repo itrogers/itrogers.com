@@ -23,7 +23,7 @@ export const NAV: { label: string; href: string }[] = [
 
 export const SOCIAL: { label: string; href: string; handle: string }[] = [
   { label: "GitHub", href: "https://github.com/itrogers", handle: "@itrogers" },
-  { label: "Twitter", href: "https://twitter.com/itrogers", handle: "@itrogers" },
+  { label: "X", href: "https://x.com/itrogers", handle: "@itrogers" },
   { label: "LinkedIn", href: "https://linkedin.com/in/itrogers", handle: "in/itrogers" },
 ];
 
